@@ -27,7 +27,10 @@ def coupon_discount(total: int, code: str) -> int:
         return 0
     if not code.upper().startswith("SAVE"):
         return 0
-    percent = int(code[4:])
+    try:
+        percent = int(code[4:])
+    except ValueError:
+        return 0
     return total * min(percent, 50) // 100
 
 
